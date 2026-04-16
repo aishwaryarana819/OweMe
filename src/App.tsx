@@ -1,24 +1,36 @@
-import React from "react";
-import {BrowserRouter} from "react-router-dom";
-import Logo from "./components/Logo";
-import BottomNav from "./components/BottomNav.tsx";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// Pages
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ForgotPassword from './pages/ForgotPassword';
+import Home from './pages/Home';
+import Borrowings from './pages/Borrowings';
+import Lendings from './pages/Lendings';
+import Settings from './pages/Settings';
+
+// Components
+import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
     return (
         <BrowserRouter>
-            <div className="flex flex-col items-center p-1 relative min-h-screen">
-                <Logo/>
+            <Routes>
 
-                <div className="w-full max-w-lg h-96 bg-menu/20 rounded-[32px] mt-8 flex
-                items-center justify-center border-4 border-dashed border-menu">
-                    <p className="text-body-main text-foreground opacity-50">
-                        ContentArea
-                    </p>
-                </div>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
 
-                <BottomNav/>
+                <Route element={<ProtectedRoute />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/borrowings" element={<Borrowings />} />
+                    <Route path="/lendings" element={<Lendings />} />
 
-            </div>
+                    <Route path="/settings" element={<Settings />} />
+                </Route>
+
+            </Routes>
         </BrowserRouter>
     );
 }
