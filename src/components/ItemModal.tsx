@@ -22,9 +22,9 @@ export default function ItemModal({ isOpen, onClose, itemToEdit }: ItemModalProp
     useEffect(() => {
         if (itemToEdit) {
             setName(itemToEdit.name);
-            setType(itemToEdit.type);
-            setDate(itemToEdit.promised_return_date ? itemToEdit.promised_return_date.split('T')[0] : '');
-            setIsArchived(itemToEdit.is_archived);
+            setType((itemToEdit.type as 'borrowing' | 'lending') || 'borrowing');
+            setDate(itemToEdit.promised_return_date ? String(itemToEdit.promised_return_date).split('T')[0] : '');
+            setIsArchived(itemToEdit.is_archived ?? false);
         } else {
             setName('');
             setType('borrowing');
