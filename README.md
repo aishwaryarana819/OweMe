@@ -2,9 +2,9 @@
 ## Overview
 OweMe is a webapp to track borrowings & lendings but with a focus on stuff rather than money; though you can track money too if you'd like.
 
-## Features
+## Features (Some not in current release (v1.0))
 - Add borrwoings/lendings
-- Add date, before/after photos & more.
+- Add date, before/after photos & more
 - View borrowings/lendings
 - Complete borrowings/lendings
 - View archive
